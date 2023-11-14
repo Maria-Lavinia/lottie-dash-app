@@ -63,10 +63,6 @@ button {
   border-radius: 0;
   border-bottom: 1px solid #01313c;
   background-color: transparent;
-  /* font-size: 22px;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-  border: none; */
 }
 input::placeholder {
   color: grey;
@@ -157,10 +153,11 @@ nav {
 svg {
   height: 2rem;
   width: auto;
-
-  /* max-height: 100%; */
-  /* aspect-ratio: auto; */
 }
-svg path {
-  fill: #02005a;
+
+.player-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left !important;
+  padding: 1.5rem;
 }
