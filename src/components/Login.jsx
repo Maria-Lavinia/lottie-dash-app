@@ -55,7 +55,7 @@ export default function Login() {
               autoComplete="off"
               required
               value={username}
-              placeholder="mlo@frankly.dk"
+              placeholder="dev@frankly.dk"
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>

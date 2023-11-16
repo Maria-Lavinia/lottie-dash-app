@@ -12,6 +12,12 @@ export default function Navigation() {
   const token = useSelector((state) => state.user.token);
   console.log("token:", token);
 
+  const logOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    window.location.href = "/";
+  };
+
   return (
     <header>
       {token ? (
@@ -38,9 +44,12 @@ export default function Navigation() {
           <>
             <a href="/dashboard">Dashboard</a>
             <a href="/upload-lottie">Upload Lottie</a>
+            <button className="logOutBtn" onClick={logOut}>
+              Log out
+            </button>
           </>
         ) : (
-          <a href="/">Log in</a>
+          ""
         )}
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
