@@ -182,7 +182,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-left: 1rem;
+  padding-left: 4rem;
 }
 nav {
   display: flex;
@@ -191,7 +191,6 @@ nav {
   justify-content: right;
   height: 80px;
   width: 100%;
-  /* padding: 0 2rem; */
   background-color: transparent;
   color: #02005a;
 }
@@ -216,6 +215,7 @@ header .nav-btn {
   visibility: hidden;
   opacity: 0;
   font-size: 1.8rem;
+  display: none;
 }
 
 header div,
@@ -227,9 +227,11 @@ nav {
 @media only screen and (max-width: 1024px) {
   header {
     justify-content: space-between;
+    padding-left: 1rem;
   }
   header .nav-btn {
     visibility: visible;
+    display: block;
     opacity: 1;
     color: white;
     padding-right: 1rem;
@@ -266,6 +268,10 @@ nav {
   nav a {
     font-size: 1.5rem;
   }
+  .logOutBtn {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .logOutBtn {
@@ -279,4 +285,5 @@ nav {
   margin: 10px 10px;
   cursor: pointer;
   border-radius: 70px;
+  margin-right: 4rem;
 }
