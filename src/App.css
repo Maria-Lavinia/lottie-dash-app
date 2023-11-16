@@ -24,6 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
   /* padding: 1rem 0.5rem; */
 }
 
@@ -53,6 +54,7 @@ a:visited {
 }
 
 input[type="email"],
+input[type="text"],
 input[type="password"],
 textarea,
 button {
@@ -156,8 +158,32 @@ svg {
 }
 
 .player-container {
+  padding: 4rem;
   display: flex;
-  flex-direction: row;
-  justify-content: left !important;
-  padding: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.player-container > div {
+  border: 2px solid pink;
+  flex: 0 0 calc(33.33% - 20px);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 40rem) {
+  .player-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+@media (max-width: 60rem) {
+  .player-container > div {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 40rem) {
+  .player-container > div {
+    flex: 0 0 100%;
+  }
 }

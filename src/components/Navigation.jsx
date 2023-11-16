@@ -2,7 +2,7 @@ export default function Navigation() {
   return (
     <>
       <nav>
-        <a href="/">
+        <a href="/dashboard">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.5 91.1">
             <title>Frankly - Problems Love Creativity ❤️</title>
             <path

@@ -10,7 +10,9 @@ export const loginUser = createAsyncThunk(
         userCredentials
       );
       const { access_token } = response.data;
+      const { id } = response.data;
       localStorage.setItem("token", access_token);
+      localStorage.setItem("userId", id);
       console.log(response.data);
       return response.data;
     } catch (error) {

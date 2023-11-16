@@ -1,5 +1,6 @@
 import "./App.css";
 import Login from "./components/Login";
+import UploadAnimation from "./components/UploadLottie";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Login />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/upload-lottie" element={<UploadAnimation />}></Route>
           </Routes>
         </Router>
       </main>

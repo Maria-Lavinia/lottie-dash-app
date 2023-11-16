@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAnimations } from "../redux/animations/AnimationSlice";
-import { Player } from "@lottiefiles/react-lottie-player";
+import { Player, Controls } from "@lottiefiles/react-lottie-player";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -20,7 +20,8 @@ to fetch the animations and update the Redux store with the fetched data. */
       <h1>Dashboard</h1>
       <p>Animations</p>
       <div className="player-container">
-        {animations &&
+        {/* By adding Array.isArray(animations) before the map function, you ensure that you only attempt to map over animations if it's an array.  */}
+        {Array.isArray(animations) &&
           animations.map((animation) => (
             <div key={animation.id}>
               <p>{animation.fileName}</p>
@@ -31,7 +32,13 @@ to fetch the animations and update the Redux store with the fetched data. */
                 loop
                 src={animation.jsonData}
                 style={{ height: "300px", width: "300px" }}
-              />
+              >
+                <Controls
+                  visible={true}
+                  darkTheme={false}
+                  buttons={["play", "repeat", "frame", "stop"]}
+                />
+              </Player>
             </div>
           ))}
       </div>

@@ -25,15 +25,12 @@ export default function Login() {
     }
     try {
       const response = await dispatch(loginUser(userCredentials));
-
-      // Assuming your loginUser action returns the token in the response.data
       const { access_token } = response.payload;
 
       // Check if the token exists
       if (access_token) {
         setUsername("");
         setPassword("");
-        // Only navigate if there is a valid token
         navigate("/dashboard");
       } else {
         setError("Authentication failed");
@@ -49,10 +46,11 @@ export default function Login() {
   // Use useEffect to check if there is a token in local storage
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
+    const storedId = localStorage.getItem("id");
 
     // If there is a token, navigate to the dashboard
-    if (storedToken) {
-      navigate("/dashboard");
+    if (storedToken && storedId) {
+      navigate("/upload-lottie");
     }
   }, [navigate]);
 
