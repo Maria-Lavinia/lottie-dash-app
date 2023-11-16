@@ -31,7 +31,7 @@ export default function Login() {
       if (access_token) {
         setUsername("");
         setPassword("");
-        navigate("/dashboard");
+        navigate("/upload-lottie");
       } else {
         setError("Authentication failed");
         console.error("Authentication failed");
@@ -39,20 +39,8 @@ export default function Login() {
     } catch (error) {
       setError("Login failed. Please try again.");
       console.error("Login failed:", error);
-      // Handle other errors if needed
     }
   };
-
-  // Use useEffect to check if there is a token in local storage
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    const storedId = localStorage.getItem("id");
-
-    // If there is a token, navigate to the dashboard
-    if (storedToken && storedId) {
-      navigate("/upload-lottie");
-    }
-  }, [navigate]);
 
   return (
     <>

@@ -73,6 +73,7 @@ export default function UploadAnimation() {
             <input
               type="text"
               id="projectName"
+              autoComplete="off"
               required
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}

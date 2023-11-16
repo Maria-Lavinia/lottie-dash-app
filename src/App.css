@@ -48,11 +48,6 @@ form {
   padding-bottom: 1rem;
 }
 
-a,
-a:visited {
-  color: #fff;
-}
-
 input[type="email"],
 input[type="text"],
 input[type="password"],
@@ -146,12 +141,6 @@ button:hover {
 }
 
 /* nav */
-nav {
-  display: flex;
-  justify-content: left;
-  padding: 1.5rem;
-  height: 5rem;
-}
 svg {
   height: 2rem;
   width: auto;
@@ -185,5 +174,96 @@ svg {
 @media (max-width: 40rem) {
   .player-container > div {
     flex: 0 0 100%;
+  }
+}
+
+/* nav */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 1rem;
+}
+nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: right;
+  height: 80px;
+  width: 100%;
+  /* padding: 0 2rem; */
+  background-color: transparent;
+  color: #02005a;
+}
+
+nav a {
+  margin: 0 1rem;
+  color: #02005a;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: pink;
+}
+
+header .nav-btn {
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #02005a;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
+}
+
+header div,
+nav {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  header {
+    justify-content: space-between;
+  }
+  header .nav-btn {
+    visibility: visible;
+    opacity: 1;
+    color: white;
+    padding-right: 1rem;
+  }
+  nav a {
+    color: white;
+  }
+  header nav {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: #02005a;
+    transition: 1s;
+    z-index: 99;
+  }
+
+  header .responsive_nav {
+    transform: translateY(100vh);
+  }
+
+  nav .nav-close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  nav a {
+    font-size: 1.5rem;
   }
 }

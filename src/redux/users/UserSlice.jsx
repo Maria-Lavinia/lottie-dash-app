@@ -25,15 +25,15 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
-    token: null,
+    token: localStorage.getItem("token") || null,
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.user = action.payload.id;
+        state.token = action.payload.access_token;
         state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
