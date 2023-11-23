@@ -93,7 +93,7 @@ export default function Profile() {
         </div>
 
         <div>
-          {Array.isArray(animations) ? (
+          {Array.isArray(animations) && animations.length > 0 ? (
             <>
               <h2>A couple of my Lotties</h2>
               <div className="player-container-profile">
@@ -103,10 +103,13 @@ export default function Profile() {
                     <div key={animation.id}>
                       <div className="lottieCard">
                         <div className="container">
-                          <p>
+                          <p style={{ color: "black" }}>
                             <strong>{animation.fileName}</strong>
                           </p>
-                          <p> - {animation.projectName} - </p>
+                          <p style={{ color: "black" }}>
+                            {" "}
+                            - {animation.projectName} -{" "}
+                          </p>
 
                           <Player
                             autoplay

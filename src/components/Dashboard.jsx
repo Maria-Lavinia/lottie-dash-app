@@ -75,10 +75,13 @@ to fetch the animations and update the Redux store with the fetched data. */
 
                 <div className="lottieCard">
                   <div className="container">
-                    <p>
+                    <p style={{ color: "black" }}>
                       <strong>{animation.fileName}</strong>
                     </p>
-                    <p> - {animation.projectName} - </p>
+                    <p style={{ color: "black" }}>
+                      {" "}
+                      - {animation.projectName} -{" "}
+                    </p>
 
                     <Player
                       autoplay
