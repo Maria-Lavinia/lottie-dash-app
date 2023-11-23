@@ -25,6 +25,33 @@ export const postAnimation = createAsyncThunk(
   }
 );
 
+export const getUserAnimations = createAsyncThunk(
+  "get/userAnimations",
+  async (userId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3005/animations/userAnimations/${userId}`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+export const deleteAnimation = createAsyncThunk(
+  "del/Animation",
+  async (animationId) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3005/animations/${animationId}`
+      );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 const animationSlice = createSlice({
   name: "animations",
   initialState: {
@@ -39,16 +66,34 @@ const animationSlice = createSlice({
       .addCase(postAnimation.fulfilled, (state, action) => {
         state.animations = action.payload;
       })
+      .addCase(getUserAnimations.fulfilled, (state, action) => {
+        state.animations = action.payload;
+      })
+      .addCase(deleteAnimation.fulfilled, (state, action) => {
+        state.animations = action.payload;
+      })
       .addCase(getAnimations.rejected, (state) => {
         state.animations = null;
       })
       .addCase(postAnimation.rejected, (state) => {
         state.animations = null;
       })
+      .addCase(getUserAnimations.rejected, (state) => {
+        state.animations = null;
+      })
+      .addCase(deleteAnimation.rejected, (state) => {
+        state.animations = null;
+      })
       .addCase(getAnimations.pending, (state) => {
         state.animations = null;
       })
       .addCase(postAnimation.pending, (state) => {
+        state.animations = null;
+      })
+      .addCase(getUserAnimations.pending, (state) => {
+        state.animations = null;
+      })
+      .addCase(deleteAnimation.pending, (state) => {
         state.animations = null;
       });
   },

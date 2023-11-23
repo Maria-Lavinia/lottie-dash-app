@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/users/UserSlice";
 import { useNavigate } from "react-router-dom";
@@ -26,13 +26,15 @@ export default function Login() {
     try {
       const response = await dispatch(loginUser(userCredentials));
       const { access_token } = response.payload;
+      const { role } = response.payload;
 
       // Check if the token exists
-      if (access_token) {
+      if (access_token && role === "admin") {
         setUsername("");
         setPassword("");
         navigate("/upload-lottie");
       } else {
+        navigate("/dashboard");
         setError("Authentication failed");
         console.error("Authentication failed");
       }
