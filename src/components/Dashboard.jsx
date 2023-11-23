@@ -73,21 +73,27 @@ to fetch the animations and update the Redux store with the fetched data. */
                   ></DeleteIcon>
                 )}
 
-                <p>{animation.fileName}</p>
-                <p>{animation.projectName}</p>
+                <div className="lottieCard">
+                  <div className="container">
+                    <p>
+                      <strong>{animation.fileName}</strong>
+                    </p>
+                    <p> - {animation.projectName} - </p>
 
-                <Player
-                  autoplay
-                  loop
-                  src={animation.jsonData}
-                  style={{ height: "300px", width: "300px" }}
-                >
-                  <Controls
-                    visible={true}
-                    darkTheme={false}
-                    buttons={["play", "repeat", "frame", "stop"]}
-                  />
-                </Player>
+                    <Player
+                      autoplay
+                      loop
+                      src={animation.jsonData}
+                      style={{ height: "300px", width: "300px" }}
+                    >
+                      <Controls
+                        visible={true}
+                        darkTheme={false}
+                        buttons={["play", "repeat", "frame", "stop"]}
+                      />
+                    </Player>
+                  </div>
+                </div>
               </div>
             ))}
         </div>

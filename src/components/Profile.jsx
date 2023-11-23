@@ -93,24 +93,39 @@ export default function Profile() {
         </div>
 
         <div>
-          <h2>A couple of my Lotties</h2>
-          <div className="player-container-profile">
-            {/* By adding Array.isArray(animations) before the map function, you ensure that you only attempt to map over animations if it's an array.  */}
-            {Array.isArray(animations) &&
-              animations.slice(0, 4).map((animation) => (
-                <div key={animation.id}>
-                  <p>{animation.fileName}</p>
-                  <p>{animation.projectName}</p>
+          {Array.isArray(animations) ? (
+            <>
+              <h2>A couple of my Lotties</h2>
+              <div className="player-container-profile">
+                {/* By adding Array.isArray(animations) before the map function, you ensure that you only attempt to map over animations if it's an array.  */}
+                {Array.isArray(animations) &&
+                  animations.slice(0, 4).map((animation) => (
+                    <div key={animation.id}>
+                      <div className="lottieCard">
+                        <div className="container">
+                          <p>
+                            <strong>{animation.fileName}</strong>
+                          </p>
+                          <p> - {animation.projectName} - </p>
 
-                  <Player
-                    autoplay
-                    loop
-                    src={animation.jsonData}
-                    style={{ height: "300px", width: "300px" }}
-                  ></Player>
-                </div>
-              ))}
-          </div>
+                          <Player
+                            autoplay
+                            loop
+                            src={animation.jsonData}
+                            style={{ height: "300px", width: "300px" }}
+                          ></Player>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </>
+          ) : (
+            <div className="noLottieContainer">
+              <h1>Sorry...</h1>
+              <p>No animations to show. Uplaod a Lottie yourself!</p>
+            </div>
+          )}
         </div>
       </div>
     </>
