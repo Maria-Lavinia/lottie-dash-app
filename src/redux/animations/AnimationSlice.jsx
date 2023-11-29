@@ -52,6 +52,23 @@ export const deleteAnimation = createAsyncThunk(
   }
 );
 
+export const searchAnimations = createAsyncThunk(
+  "search/animations",
+  async (searchQuery) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3005/animations/search/fileName?fileName=${searchQuery}`
+      );
+      if (response.data.length === 0) {
+        alert("No results found");
+      }
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 const animationSlice = createSlice({
   name: "animations",
   initialState: {
@@ -72,6 +89,9 @@ const animationSlice = createSlice({
       .addCase(deleteAnimation.fulfilled, (state, action) => {
         state.animations = action.payload;
       })
+      .addCase(searchAnimations.fulfilled, (state, action) => {
+        state.animations = action.payload;
+      })
       .addCase(getAnimations.rejected, (state) => {
         state.animations = null;
       })
@@ -84,6 +104,9 @@ const animationSlice = createSlice({
       .addCase(deleteAnimation.rejected, (state) => {
         state.animations = null;
       })
+      .addCase(searchAnimations.rejected, (state) => {
+        state.animations = null;
+      })
       .addCase(getAnimations.pending, (state) => {
         state.animations = null;
       })
@@ -94,6 +117,9 @@ const animationSlice = createSlice({
         state.animations = null;
       })
       .addCase(deleteAnimation.pending, (state) => {
+        state.animations = null;
+      })
+      .addCase(searchAnimations.pending, (state) => {
         state.animations = null;
       });
   },

@@ -7,6 +7,8 @@ import {
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SearchBar from "./SearchBar";
+import Filter from "./Filter";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -41,11 +43,14 @@ to fetch the animations and update the Redux store with the fetched data. */
       console.error("Error deleting animation:", error);
     }
   };
+
   return (
     <>
+      <SearchBar />
       <div className="dashboard">
         <h1>Dashboard</h1>
         <p>Frankly's Lottie Animations</p>
+        {/* <Filter /> */}
         <div className="player-container">
           {/* By adding Array.isArray(animations) before the map function, you ensure that you only attempt to map over animations if it's an array.  */}
           {Array.isArray(animations) &&

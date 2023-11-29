@@ -158,6 +158,7 @@ svg {
   justify-content: center;
   place-items: center;
   padding-top: 2rem;
+  width: 100%;
   /* height: 100vh; */
 }
 
@@ -237,4 +238,28 @@ h2 {
 }
 .container {
   padding: 2px 16px;
+}
+
+/* search bar */
+.searchBar {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 2rem;
+  right: 4rem;
+  margin-block-end: 2rem;
+}
+.searchBar button {
+  font-weight: 1000;
+  font-size: 1rem;
+  color: none;
+  background-color: transparent;
+  border-radius: none;
+  padding: none;
+  border: none;
+  margin: 0;
+  margin-top: none;
+}
+.searchBar button::hover {
+  background-color: #0f02f7 !important;
 }
