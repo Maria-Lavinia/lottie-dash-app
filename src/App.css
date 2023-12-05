@@ -268,7 +268,7 @@ h2 {
 /* reorder */
 
 .reorder {
-  position: fixed;
+  position: absolute;
   top: 2rem;
   left: 7rem;
 }
