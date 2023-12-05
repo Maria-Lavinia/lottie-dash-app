@@ -45,6 +45,7 @@ form {
 input[type="email"],
 input[type="text"],
 input[type="password"],
+input[type="search"],
 textarea,
 button {
   font-family: "Nunito", sans-serif;
@@ -262,4 +263,12 @@ h2 {
 }
 .searchBar button::hover {
   background-color: #0f02f7 !important;
+}
+
+/* reorder */
+
+.reorder {
+  position: fixed;
+  top: 2rem;
+  left: 7rem;
 }

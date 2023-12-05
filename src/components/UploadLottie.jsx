@@ -83,6 +83,7 @@ export default function UploadAnimation() {
             Upload here:
             <input
               type="file"
+              multiple="multiple"
               id="jsonData"
               accept=".json,application/json"
               required

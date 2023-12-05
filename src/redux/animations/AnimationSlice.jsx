@@ -68,6 +68,34 @@ export const searchAnimations = createAsyncThunk(
     }
   }
 );
+// export const searchAnimations = createAsyncThunk(
+//   "search/animations",
+//   async ({ fileName, projectName }) => {
+//     try {
+//       const params = new URLSearchParams();
+
+//       if (fileName) {
+//         params.append("fileName", fileName);
+//       }
+
+//       if (projectName) {
+//         params.append("projectName", projectName);
+//       }
+
+//       const response = await axios.get(
+//         `http://localhost:3005/animations/search?${params.toString()}`
+//       );
+
+//       if (response.data.length === 0) {
+//         alert("No results found");
+//       }
+
+//       return response.data;
+//     } catch (error) {
+//       throw error;
+//     }
+//   }
+// );
 
 const animationSlice = createSlice({
   name: "animations",

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   deleteAnimation,
   getAnimations,
@@ -8,12 +8,13 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchBar from "./SearchBar";
-import Filter from "./Filter";
-
+// import TocIcon from "@mui/icons-material/Toc";
+import SwapVertIcon from "@mui/icons-material/SwapVert";
 export default function Dashboard() {
   const dispatch = useDispatch();
   const animations = useSelector((state) => state.animations.animations);
   const role = localStorage.getItem("role");
+  const [displayedAnimations, setDisplayedAnimations] = useState([]);
 
   /* The `useEffect` hook is used to perform side effects in a functional component. In this case, it is
 used to dispatch the `getAnimations` action to fetch animations from the Redux store when the
@@ -22,6 +23,10 @@ to fetch the animations and update the Redux store with the fetched data. */
   useEffect(() => {
     dispatch(getAnimations());
   }, [dispatch]);
+
+  useEffect(() => {
+    setDisplayedAnimations(animations);
+  }, [animations]);
 
   const handleDownload = (animation) => {
     const blob = new Blob([animation.jsonData], { type: "application/json" });
@@ -43,18 +48,43 @@ to fetch the animations and update the Redux store with the fetched data. */
       console.error("Error deleting animation:", error);
     }
   };
+  const filterAnim = () => {
+    console.log("filterAnim");
+    if (Array.isArray(animations)) {
+      /* The line `const reversedArray = [...animations].reverse();` is creating a new array called
+  `reversedArray` that is a copy of the `animations` array, but with its elements in reverse order.
+  The spread operator (`[...animations]`) is used to create a new array with the same elements as
+  `animations`, and the `reverse()` method is then called on this new array to reverse the order of
+  its elements. */
+      const reversedArray = [...displayedAnimations].reverse();
+      setDisplayedAnimations(reversedArray);
+      console.log("reversedArray:", reversedArray);
+      return reversedArray;
+    }
+    return animations; // Return the original value if it's not an array
+  };
 
   return (
     <>
+      <SwapVertIcon
+        style={{
+          float: "right",
+          padding: 0.1 + "em",
+          cursor: "pointer",
+        }}
+        className="reorder"
+        onClick={filterAnim}
+      ></SwapVertIcon>
       <SearchBar />
       <div className="dashboard">
         <h1>Dashboard</h1>
         <p>Frankly's Lottie Animations</p>
+
         {/* <Filter /> */}
         <div className="player-container">
           {/* By adding Array.isArray(animations) before the map function, you ensure that you only attempt to map over animations if it's an array.  */}
-          {Array.isArray(animations) &&
-            animations.map((animation) => (
+          {Array.isArray(displayedAnimations) &&
+            displayedAnimations.map((animation) => (
               <div key={animation.id}>
                 {role === "user" ? (
                   <FileDownloadIcon

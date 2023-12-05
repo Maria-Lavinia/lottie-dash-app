@@ -18,9 +18,8 @@ export default function SearchBar() {
     <>
       <div className="searchBar">
         <input
-          type="text"
+          type="search"
           placeholder="Search"
-          className="searchBarInput"
           value={searchQuery}
           onChange={onQueryChange}
         />
