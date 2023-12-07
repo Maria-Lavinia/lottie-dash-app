@@ -74,7 +74,7 @@ export default function Login() {
             />
           </label>
           {error && (
-            <p data-color="text-error" data-font="text-sm">
+            <p style={{ fontSize: 0.8 + "rem" }} data-color="text-error">
               {error}
             </p>
           )}

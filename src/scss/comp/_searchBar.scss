@@ -16,19 +16,8 @@
     right: 4rem;
     margin-block-end: 2rem;
   }
-  button {
-    font-weight: 1000;
-    font-size: 1rem;
-    color: none;
-    background-color: var(--color-none);
-    border-radius: none;
-    padding: none;
+  input[type="search"] {
     border: none;
-    margin: 0;
-    margin-top: none;
-
-    &:hover {
-      background-color: var(--color-button-hover) !important;
-    }
+    border-bottom: 1px solid var(--color-border);
   }
 }

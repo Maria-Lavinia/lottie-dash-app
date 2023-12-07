@@ -9,7 +9,7 @@
 // -----------------------------------------------------------------------------
 @mixin button {
   @include comp.create("button") {
-    font-weight: 1000;
+    font-weight: 600;
     color: #333333;
     border: 1px solid #01313c;
     // border: none;

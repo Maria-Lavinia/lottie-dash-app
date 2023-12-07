@@ -35,26 +35,8 @@ $box-map: (
     box-sizing: border-box;
   }
   @at-root html {
-    --on: ;
-    --off: initial;
     color: var(--color-brand);
     background-color: var(--color-white);
-    // grid states
-    @media (min-width: $bp-mobile-start) {
-      --is-mobile: var(--on);
-      --is-tablet: var(--off);
-      --is-desktop: var(--off);
-    }
-    @media (min-width: $bp-tablet-start) {
-      --is-mobile: var(--off);
-      --is-tablet: var(--on);
-      --is-desktop: var(--off);
-    }
-    @media (min-width: $bp-desktop-start) {
-      --is-mobile: var(--off);
-      --is-tablet: var(--off);
-      --is-desktop: var(--on);
-    }
     font-size: 22px;
   }
   .App {

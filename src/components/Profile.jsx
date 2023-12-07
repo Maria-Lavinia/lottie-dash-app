@@ -84,6 +84,7 @@ export default function Profile() {
                   data-color="text-black"
                   type="text"
                   id="lastName"
+                  autoComplete="off"
                   defaultValue={user?.lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />

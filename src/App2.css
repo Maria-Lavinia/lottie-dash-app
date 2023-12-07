@@ -6,32 +6,9 @@
 }
 
 html {
-  --on: ;
-  --off: initial;
   color: var(--color-brand);
   background-color: var(--color-white);
   font-size: 22px;
-}
-@media (min-width: 0) {
-  html {
-    --is-mobile: var(--on);
-    --is-tablet: var(--off);
-    --is-desktop: var(--off);
-  }
-}
-@media (min-width: 40rem) {
-  html {
-    --is-mobile: var(--off);
-    --is-tablet: var(--on);
-    --is-desktop: var(--off);
-  }
-}
-@media (min-width: 60rem) {
-  html {
-    --is-mobile: var(--off);
-    --is-tablet: var(--off);
-    --is-desktop: var(--on);
-  }
 }
 
 .App {
@@ -586,15 +563,13 @@ html {
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   margin-top: 0;
   font-weight: 600;
+  gap: 0.5rem;
 }
 :is([data-comp=profile], [data-comp^="profile "]) .update input[type=text] {
   border: none;
-  padding: 0;
   font-size: 1rem;
-  margin: 0;
 }
 :is([data-comp=profile], [data-comp^="profile "]) .player-container-profile {
   padding: 2rem;
@@ -639,7 +614,7 @@ html {
 }
 
 :is([data-comp=button], [data-comp^="button "]) {
-  font-weight: 1000;
+  font-weight: 600;
   color: #333333;
   border: 1px solid #01313c;
   padding: 0.3125rem 0;
@@ -667,17 +642,7 @@ html {
   margin-block-end: 2rem;
 }
 
-button {
-  font-weight: 1000;
-  font-size: 1rem;
-  color: none;
-  background-color: var(--color-none);
-  border-radius: none;
-  padding: none;
+input[type=search] {
   border: none;
-  margin: 0;
-  margin-top: none;
-}
-button:hover {
-  background-color: var(--color-button-hover) !important;
+  border-bottom: 1px solid var(--color-border);
 }
