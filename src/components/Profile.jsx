@@ -46,7 +46,7 @@ export default function Profile() {
   };
   return (
     <>
-      <div className="profile">
+      <div data-comp="profile">
         <div>
           <section>
             <h1
@@ -56,8 +56,8 @@ export default function Profile() {
               Hi, {user?.firstName}! ({user?.role}) 🫶🏻
             </h1>
             <p
+              data-color="text-black"
               style={{
-                color: "black",
                 marginBottom: 1 + "em",
                 fontSize: 0.8 + "em",
               }}
@@ -69,6 +69,7 @@ export default function Profile() {
               <label htmlFor="firstName">
                 First name:
                 <input
+                  data-color="text-black"
                   type="text"
                   id="firstName"
                   autoComplete="off"
@@ -80,14 +81,18 @@ export default function Profile() {
               <label htmlFor="lastName">
                 Last name:
                 <input
+                  data-color="text-black"
                   type="text"
                   id="lastName"
+                  autoComplete="off"
                   defaultValue={user?.lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </label>
               {/* {error && <p className="error">{error}</p>} */}
-              <button type="submit">Update info </button>
+              <button data-comp="button" type="submit">
+                Update info{" "}
+              </button>
             </form>
           </section>
         </div>
@@ -101,7 +106,7 @@ export default function Profile() {
                 {Array.isArray(animations) &&
                   animations.slice(0, 4).map((animation) => (
                     <div key={animation.id}>
-                      <div className="lottieCard">
+                      <div data-comp="lottie">
                         <div className="container">
                           <p style={{ color: "black" }}>
                             <strong>{animation.fileName}</strong>

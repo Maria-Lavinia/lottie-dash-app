@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// Page SCSS Assemble
+//
+// compiles to page.css to folder:  src
+// -----------------------------------------------------------------------------
+// Imports
+@use "./config";
+@use "../base";
+@use "../comp";
+
+@include base.layout-base;
+
+@include base.theme;
+
+@include comp.form;
+@include comp.logo;
+@include comp.lottiePlayer;
+@include comp.lottie;
+@include comp.dashboard;
+@include comp.profile;
+@include comp.button;
+@include comp.searchBar;

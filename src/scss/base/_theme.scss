@@ -1,0 +1,109 @@
+// -----------------------------------------------------------------------------
+// Theme
+//
+// -----------------------------------------------------------------------------
+@use "../assemble/config";
+
+@mixin theme {
+  $color-config: config.$color-config;
+  @at-root {
+    // ------------------------------------------------------------------------
+    // Colors 🎨
+    // ------------------------------------------------------------------------
+    * {
+      --color-text-desktop: inherit;
+      --color-text-tablet: inherit;
+      --color-text-mobile: inherit;
+      --color-text: inherit;
+
+      // disable background color to avoid inheritance override
+      // Safari sucks soooo bad 🤬
+      // .... explain this!!!
+      --color-back-desktop: var(--color-back);
+      --color-back-tablet: var(--color-back);
+      --color-back-mobile: var(--color-back);
+      --color-back: var(--off);
+
+      --🎨-if-color-back-desktop: var(--is-desktop) var(--color-back-desktop);
+      --🎨-if-color-back-tablet: var(--is-tablet) var(--color-back-tablet);
+      --🎨-if-color-back-mobile: var(--is-mobile) var(--color-back-mobile);
+      --🎨-color-back: var(
+        --🎨-if-color-back-desktop,
+        var(--🎨-if-color-back-tablet, var(--🎨-if-color-back-mobile))
+      );
+
+      --🎨-if-color-text-desktop: var(--is-desktop) var(--color-text-desktop);
+      --🎨-if-color-text-tablet: var(--is-tablet) var(--color-text-tablet);
+      --🎨-if-color-text-mobile: var(--is-mobile) var(--color-text-mobile);
+      --🎨-color-text: var(
+        --🎨-if-color-text-desktop,
+        var(
+          --🎨-if-color-text-tablet,
+          var(--🎨-if-color-text-mobile, var(--color-text))
+        )
+      );
+
+      color: var(--🎨-color-text);
+    }
+
+    :is(
+        [data-color*="back-"],
+        [data-color-mobile*="back"],
+        [data-color-tablet*="back"],
+        [data-color-desktop*="back"]
+      ) {
+      background-color: var(--🎨-color-back);
+    }
+
+    // if element has a data-color attribute (default)
+    // make other breakpoints default to --color-text
+    :where([data-color*="text"]) {
+      --color-text-desktop: var(--color-text);
+      --color-text-tablet: var(--color-text);
+      --color-text-mobile: var(--color-text);
+      --color-text: inherit;
+    }
+
+    html {
+      @each $name, $color in $color-config {
+        --color-#{$name}: #{$color};
+      }
+    }
+
+    @each $bp in null desktop tablet mobile {
+      $sel: if($bp, data-color-#{$bp}, data-color);
+      $var-back: if($bp, --color-back-#{$bp}, --color-back);
+      $var-text: if($bp, --color-text-#{$bp}, --color-text);
+
+      :where([#{$sel}]:not([#{$sel}*="text"])) {
+        #{$var-text}: var(--color-black);
+      }
+
+      // Auto contrast
+      // Note this does not use WCAG 2.1
+      // (because it favour black too much)
+      :where(
+          [#{$sel}*="dark"],
+          [#{$sel}*="black"],
+          [#{$sel}*="brand"],
+          [#{$sel}*="correct"],
+          [#{$sel}$="red"]
+        ):not([#{$sel}*="text"]) {
+        #{$var-text}: var(--color-white);
+      }
+
+      @each $name, $color in $color-config {
+        [#{$sel}~="back-#{$name}"] {
+          #{$var-back}: var(--color-#{$name});
+        }
+        [#{$sel}~="text-#{$name}"] {
+          #{$var-text}: var(--color-#{$name});
+        }
+      }
+    }
+  }
+}
+
+@function color($name) {
+  @return var(--color-#{$name});
+}

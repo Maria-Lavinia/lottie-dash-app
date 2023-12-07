@@ -1,0 +1,19 @@
+// -----------------------------------------------------------------------------
+// Input Components
+// -----------------------------------------------------------------------------
+@use "../frankly/comp";
+@use "../frankly/theme";
+
+// -----------------------------------------------------------------------------
+// Logo Component
+// -----------------------------------------------------------------------------
+@mixin dashboard {
+  @include comp.create("dashboard") {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    place-items: center;
+    padding-top: 2rem;
+    width: 100%;
+  }
+}

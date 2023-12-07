@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// Theme Functions
+// -----------------------------------------------------------------------------
+@use "sass:map";
+@use "./config";
+
+@function color($name) {
+  $color: map.get(config.$color-config, $name);
+
+  @if not $color {
+    @error ("'#{$name}' is not a valid color of color-config");
+  }
+
+  @return $color;
+}

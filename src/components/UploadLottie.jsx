@@ -19,8 +19,6 @@ export default function UploadAnimation() {
   }, []);
 
   const upload = async (e) => {
-    e.preventDefault();
-
     const lottieCredentials = new FormData();
     lottieCredentials.append("userId", storedId);
     lottieCredentials.append("fileName", fileName);
@@ -53,7 +51,7 @@ export default function UploadAnimation() {
   }
   return (
     <>
-      <section>
+      <section data-comp="form">
         <h1>Upload your Lottie</h1>
         <form onSubmit={upload}>
           <label htmlFor="fileName">
@@ -92,7 +90,9 @@ export default function UploadAnimation() {
             />
           </label>
           {error && <p className="error">{error}</p>}
-          <button type="submit">Upload </button>
+          <button data-comp="button" type="submit">
+            Upload{" "}
+          </button>
         </form>
       </section>
     </>

@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// Component
+// -----------------------------------------------------------------------------
+@use "sass:string";
+
+@mixin create($name, $variation: null) {
+  @at-root #{selector($name, $variation)} {
+    @content;
+  }
+}
+
+@function selector($name, $variation: null) {
+  @if not $variation {
+    @return string.unquote(
+      ':is([data-comp="#{$name}"], [data-comp^="#{$name} "])'
+    );
+  } @else {
+    @return string.unquote(
+      '[data-comp~="#{$variation}"][data-comp^="#{$name} "]'
+    );
+  }
+}

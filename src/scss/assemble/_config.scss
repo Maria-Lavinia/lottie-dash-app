@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// Project config
+// -----------------------------------------------------------------------------
+$color-config: (
+  "none": transparent,
+  "white": white,
+  "black": black,
+  "brand": #02005a,
+  "border": #01313c,
+  "button-hover": #0f02f7,
+  "placeholder": grey,
+  //// Functional colours
+  // Error
+  "error": red,
+
+  //LOTTIE
+  "box-shadow": 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+  "box-shadow-hover": 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+);
+
+@use "../frankly/config" with (
+  $color-config: $color-config
+);

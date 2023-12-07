@@ -71,17 +71,21 @@ to fetch the animations and update the Redux store with the fetched data. */
           float: "right",
           padding: 0.1 + "em",
           cursor: "pointer",
+          position: "absolute",
+          right: 0,
+          top: 2 + "rem",
+          left: 7 + "rem",
         }}
         className="reorder"
         onClick={filterAnim}
       ></SwapVertIcon>
       <SearchBar />
-      <div className="dashboard">
+      <div data-comp="dashboard">
         <h1>Dashboard</h1>
         <p>Frankly's Lottie Animations</p>
 
         {/* <Filter /> */}
-        <div className="player-container">
+        <div data-comp="lottiePlayer">
           {/* By adding Array.isArray(animations) before the map function, you ensure that you only attempt to map over animations if it's an array.  */}
           {Array.isArray(displayedAnimations) &&
             displayedAnimations.map((animation) => (
@@ -108,15 +112,12 @@ to fetch the animations and update the Redux store with the fetched data. */
                   ></DeleteIcon>
                 )}
 
-                <div className="lottieCard">
+                <div data-comp="lottie">
                   <div className="container">
-                    <p style={{ color: "black" }}>
+                    <p data-color="text-black">
                       <strong>{animation.fileName}</strong>
                     </p>
-                    <p style={{ color: "black" }}>
-                      {" "}
-                      - {animation.projectName} -{" "}
-                    </p>
+                    <p data-color="text-black"> - {animation.projectName} - </p>
 
                     <Player
                       autoplay

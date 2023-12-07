@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -7,24 +6,447 @@
 }
 
 html {
-  font-family: "Nunito", sans-serif;
+  color: var(--color-brand);
+  background-color: var(--color-white);
   font-size: 22px;
-  color: #02005a;
-}
-
-body {
-  /* background-color: #f8f2e8; */
-  background-color: white;
 }
 
 .App {
   display: flex;
-  /* flex-direction: row; */
-  /* height: 100vh; */
   width: 100%;
 }
 
-section {
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  --color-text-desktop: inherit;
+  --color-text-tablet: inherit;
+  --color-text-mobile: inherit;
+  --color-text: inherit;
+  --color-back-desktop: var(--color-back);
+  --color-back-tablet: var(--color-back);
+  --color-back-mobile: var(--color-back);
+  --color-back: var(--off);
+  --🎨-if-color-back-desktop: var(--is-desktop) var(--color-back-desktop);
+  --🎨-if-color-back-tablet: var(--is-tablet) var(--color-back-tablet);
+  --🎨-if-color-back-mobile: var(--is-mobile) var(--color-back-mobile);
+  --🎨-color-back: var(
+    --🎨-if-color-back-desktop,
+    var(--🎨-if-color-back-tablet, var(--🎨-if-color-back-mobile))
+  );
+  --🎨-if-color-text-desktop: var(--is-desktop) var(--color-text-desktop);
+  --🎨-if-color-text-tablet: var(--is-tablet) var(--color-text-tablet);
+  --🎨-if-color-text-mobile: var(--is-mobile) var(--color-text-mobile);
+  --🎨-color-text: var(
+    --🎨-if-color-text-desktop,
+    var(
+      --🎨-if-color-text-tablet,
+      var(--🎨-if-color-text-mobile, var(--color-text))
+    )
+  );
+  color: var(--🎨-color-text);
+}
+
+:is([data-color*=back-],
+[data-color-mobile*=back],
+[data-color-tablet*=back],
+[data-color-desktop*=back]) {
+  background-color: var(--🎨-color-back);
+}
+
+:where([data-color*=text]) {
+  --color-text-desktop: var(--color-text);
+  --color-text-tablet: var(--color-text);
+  --color-text-mobile: var(--color-text);
+  --color-text: inherit;
+}
+
+html {
+  --color-none: transparent;
+  --color-white: white;
+  --color-black: black;
+  --color-brand: #02005a;
+  --color-border: #01313c;
+  --color-button-hover: #0f02f7;
+  --color-placeholder: grey;
+  --color-error: red;
+  --color-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  --color-box-shadow-hover: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+:where([data-color]:not([data-color*=text])) {
+  --color-text: var(--color-black);
+}
+
+:where([data-color*=dark],
+[data-color*=black],
+[data-color*=brand],
+[data-color*=correct],
+[data-color$=red]):not([data-color*=text]) {
+  --color-text: var(--color-white);
+}
+
+[data-color~=back-none] {
+  --color-back: var(--color-none);
+}
+
+[data-color~=text-none] {
+  --color-text: var(--color-none);
+}
+
+[data-color~=back-white] {
+  --color-back: var(--color-white);
+}
+
+[data-color~=text-white] {
+  --color-text: var(--color-white);
+}
+
+[data-color~=back-black] {
+  --color-back: var(--color-black);
+}
+
+[data-color~=text-black] {
+  --color-text: var(--color-black);
+}
+
+[data-color~=back-brand] {
+  --color-back: var(--color-brand);
+}
+
+[data-color~=text-brand] {
+  --color-text: var(--color-brand);
+}
+
+[data-color~=back-border] {
+  --color-back: var(--color-border);
+}
+
+[data-color~=text-border] {
+  --color-text: var(--color-border);
+}
+
+[data-color~=back-button-hover] {
+  --color-back: var(--color-button-hover);
+}
+
+[data-color~=text-button-hover] {
+  --color-text: var(--color-button-hover);
+}
+
+[data-color~=back-placeholder] {
+  --color-back: var(--color-placeholder);
+}
+
+[data-color~=text-placeholder] {
+  --color-text: var(--color-placeholder);
+}
+
+[data-color~=back-error] {
+  --color-back: var(--color-error);
+}
+
+[data-color~=text-error] {
+  --color-text: var(--color-error);
+}
+
+[data-color~=back-box-shadow] {
+  --color-back: var(--color-box-shadow);
+}
+
+[data-color~=text-box-shadow] {
+  --color-text: var(--color-box-shadow);
+}
+
+[data-color~=back-box-shadow-hover] {
+  --color-back: var(--color-box-shadow-hover);
+}
+
+[data-color~=text-box-shadow-hover] {
+  --color-text: var(--color-box-shadow-hover);
+}
+
+:where([data-color-desktop]:not([data-color-desktop*=text])) {
+  --color-text-desktop: var(--color-black);
+}
+
+:where([data-color-desktop*=dark],
+[data-color-desktop*=black],
+[data-color-desktop*=brand],
+[data-color-desktop*=correct],
+[data-color-desktop$=red]):not([data-color-desktop*=text]) {
+  --color-text-desktop: var(--color-white);
+}
+
+[data-color-desktop~=back-none] {
+  --color-back-desktop: var(--color-none);
+}
+
+[data-color-desktop~=text-none] {
+  --color-text-desktop: var(--color-none);
+}
+
+[data-color-desktop~=back-white] {
+  --color-back-desktop: var(--color-white);
+}
+
+[data-color-desktop~=text-white] {
+  --color-text-desktop: var(--color-white);
+}
+
+[data-color-desktop~=back-black] {
+  --color-back-desktop: var(--color-black);
+}
+
+[data-color-desktop~=text-black] {
+  --color-text-desktop: var(--color-black);
+}
+
+[data-color-desktop~=back-brand] {
+  --color-back-desktop: var(--color-brand);
+}
+
+[data-color-desktop~=text-brand] {
+  --color-text-desktop: var(--color-brand);
+}
+
+[data-color-desktop~=back-border] {
+  --color-back-desktop: var(--color-border);
+}
+
+[data-color-desktop~=text-border] {
+  --color-text-desktop: var(--color-border);
+}
+
+[data-color-desktop~=back-button-hover] {
+  --color-back-desktop: var(--color-button-hover);
+}
+
+[data-color-desktop~=text-button-hover] {
+  --color-text-desktop: var(--color-button-hover);
+}
+
+[data-color-desktop~=back-placeholder] {
+  --color-back-desktop: var(--color-placeholder);
+}
+
+[data-color-desktop~=text-placeholder] {
+  --color-text-desktop: var(--color-placeholder);
+}
+
+[data-color-desktop~=back-error] {
+  --color-back-desktop: var(--color-error);
+}
+
+[data-color-desktop~=text-error] {
+  --color-text-desktop: var(--color-error);
+}
+
+[data-color-desktop~=back-box-shadow] {
+  --color-back-desktop: var(--color-box-shadow);
+}
+
+[data-color-desktop~=text-box-shadow] {
+  --color-text-desktop: var(--color-box-shadow);
+}
+
+[data-color-desktop~=back-box-shadow-hover] {
+  --color-back-desktop: var(--color-box-shadow-hover);
+}
+
+[data-color-desktop~=text-box-shadow-hover] {
+  --color-text-desktop: var(--color-box-shadow-hover);
+}
+
+:where([data-color-tablet]:not([data-color-tablet*=text])) {
+  --color-text-tablet: var(--color-black);
+}
+
+:where([data-color-tablet*=dark],
+[data-color-tablet*=black],
+[data-color-tablet*=brand],
+[data-color-tablet*=correct],
+[data-color-tablet$=red]):not([data-color-tablet*=text]) {
+  --color-text-tablet: var(--color-white);
+}
+
+[data-color-tablet~=back-none] {
+  --color-back-tablet: var(--color-none);
+}
+
+[data-color-tablet~=text-none] {
+  --color-text-tablet: var(--color-none);
+}
+
+[data-color-tablet~=back-white] {
+  --color-back-tablet: var(--color-white);
+}
+
+[data-color-tablet~=text-white] {
+  --color-text-tablet: var(--color-white);
+}
+
+[data-color-tablet~=back-black] {
+  --color-back-tablet: var(--color-black);
+}
+
+[data-color-tablet~=text-black] {
+  --color-text-tablet: var(--color-black);
+}
+
+[data-color-tablet~=back-brand] {
+  --color-back-tablet: var(--color-brand);
+}
+
+[data-color-tablet~=text-brand] {
+  --color-text-tablet: var(--color-brand);
+}
+
+[data-color-tablet~=back-border] {
+  --color-back-tablet: var(--color-border);
+}
+
+[data-color-tablet~=text-border] {
+  --color-text-tablet: var(--color-border);
+}
+
+[data-color-tablet~=back-button-hover] {
+  --color-back-tablet: var(--color-button-hover);
+}
+
+[data-color-tablet~=text-button-hover] {
+  --color-text-tablet: var(--color-button-hover);
+}
+
+[data-color-tablet~=back-placeholder] {
+  --color-back-tablet: var(--color-placeholder);
+}
+
+[data-color-tablet~=text-placeholder] {
+  --color-text-tablet: var(--color-placeholder);
+}
+
+[data-color-tablet~=back-error] {
+  --color-back-tablet: var(--color-error);
+}
+
+[data-color-tablet~=text-error] {
+  --color-text-tablet: var(--color-error);
+}
+
+[data-color-tablet~=back-box-shadow] {
+  --color-back-tablet: var(--color-box-shadow);
+}
+
+[data-color-tablet~=text-box-shadow] {
+  --color-text-tablet: var(--color-box-shadow);
+}
+
+[data-color-tablet~=back-box-shadow-hover] {
+  --color-back-tablet: var(--color-box-shadow-hover);
+}
+
+[data-color-tablet~=text-box-shadow-hover] {
+  --color-text-tablet: var(--color-box-shadow-hover);
+}
+
+:where([data-color-mobile]:not([data-color-mobile*=text])) {
+  --color-text-mobile: var(--color-black);
+}
+
+:where([data-color-mobile*=dark],
+[data-color-mobile*=black],
+[data-color-mobile*=brand],
+[data-color-mobile*=correct],
+[data-color-mobile$=red]):not([data-color-mobile*=text]) {
+  --color-text-mobile: var(--color-white);
+}
+
+[data-color-mobile~=back-none] {
+  --color-back-mobile: var(--color-none);
+}
+
+[data-color-mobile~=text-none] {
+  --color-text-mobile: var(--color-none);
+}
+
+[data-color-mobile~=back-white] {
+  --color-back-mobile: var(--color-white);
+}
+
+[data-color-mobile~=text-white] {
+  --color-text-mobile: var(--color-white);
+}
+
+[data-color-mobile~=back-black] {
+  --color-back-mobile: var(--color-black);
+}
+
+[data-color-mobile~=text-black] {
+  --color-text-mobile: var(--color-black);
+}
+
+[data-color-mobile~=back-brand] {
+  --color-back-mobile: var(--color-brand);
+}
+
+[data-color-mobile~=text-brand] {
+  --color-text-mobile: var(--color-brand);
+}
+
+[data-color-mobile~=back-border] {
+  --color-back-mobile: var(--color-border);
+}
+
+[data-color-mobile~=text-border] {
+  --color-text-mobile: var(--color-border);
+}
+
+[data-color-mobile~=back-button-hover] {
+  --color-back-mobile: var(--color-button-hover);
+}
+
+[data-color-mobile~=text-button-hover] {
+  --color-text-mobile: var(--color-button-hover);
+}
+
+[data-color-mobile~=back-placeholder] {
+  --color-back-mobile: var(--color-placeholder);
+}
+
+[data-color-mobile~=text-placeholder] {
+  --color-text-mobile: var(--color-placeholder);
+}
+
+[data-color-mobile~=back-error] {
+  --color-back-mobile: var(--color-error);
+}
+
+[data-color-mobile~=text-error] {
+  --color-text-mobile: var(--color-error);
+}
+
+[data-color-mobile~=back-box-shadow] {
+  --color-back-mobile: var(--color-box-shadow);
+}
+
+[data-color-mobile~=text-box-shadow] {
+  --color-text-mobile: var(--color-box-shadow);
+}
+
+[data-color-mobile~=back-box-shadow-hover] {
+  --color-back-mobile: var(--color-box-shadow-hover);
+}
+
+[data-color-mobile~=text-box-shadow-hover] {
+  --color-text-mobile: var(--color-box-shadow-hover);
+}
+
+:is([data-comp=form], [data-comp^="form "]) {
   width: 100%;
   height: 100vh;
   max-width: 420px;
@@ -34,97 +456,43 @@ section {
   padding: 1rem;
   margin-block-start: 10rem;
 }
-
-form {
+:is([data-comp=form], [data-comp^="form "]) form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding-bottom: 1rem;
 }
-
-input[type="email"],
-input[type="text"],
-input[type="password"],
-input[type="search"],
-textarea,
-button {
+:is([data-comp=form], [data-comp^="form "]) input[type=email],
+:is([data-comp=form], [data-comp^="form "]) input[type=text],
+:is([data-comp=form], [data-comp^="form "]) input[type=password],
+:is([data-comp=form], [data-comp^="form "]) input[type=search],
+:is([data-comp=form], [data-comp^="form "]) textarea {
   font-family: "Nunito", sans-serif;
   color: #333333;
   border: none;
   padding: 0.3125rem 0;
   border-radius: 0;
-  border-bottom: 1px solid #01313c;
-  background-color: transparent;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-none);
 }
-input::placeholder {
+:is([data-comp=form], [data-comp^="form "]) input::placeholder {
   color: grey;
 }
-label {
+:is([data-comp=form], [data-comp^="form "]) label {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-top: 1rem;
   font-weight: 900;
-  color: #02005a;
-}
-button {
-  /* ont-family: "Vesterbro",sans-serif; */
-  font-weight: 1000;
-  font-size: 1rem;
-  color: #333333;
-  background-color: transparent;
-  border-radius: 0;
-  /* padding: calc(2 * 0.3125rem) calc(3 * 0.3125rem); */
-  border: 1px solid #01313c;
-  margin: 0;
-  margin-top: calc(4 * 0.3125rem);
-  position: relative;
-  box-shadow: none;
-}
-button:hover {
-  background-color: #0f02f7;
-  color: #ffffff;
-  border-color: transparent;
-  cursor: pointer;
+  color: var(--color-brand);
 }
 
-.hide {
-  display: none;
-}
-
-.valid {
-  color: limegreen;
-  margin-left: 0.25rem;
-}
-
-.invalid {
-  color: red;
-  margin-left: 0.25rem;
-}
-
-.errmsg {
-  background-color: lightpink;
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.line {
-  display: inline-block;
-}
-.error {
-  color: red;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-svg {
+:is([data-comp=logo], [data-comp^="logo "]) svg {
   height: 2rem;
   width: auto;
 }
 
-.player-container {
+:is([data-comp=lottiePlayer], [data-comp^="lottiePlayer "]) {
   padding: 4rem;
   display: flex;
   flex-wrap: wrap;
@@ -133,116 +501,145 @@ svg {
   /* height: 100vh; */
   width: 100%;
 }
-.player-container > div,
-.player-container-profile > div {
+:is([data-comp=lottiePlayer], [data-comp^="lottiePlayer "]) > div {
   flex: 0 0 calc(33.33% - 20px);
   margin-bottom: 1rem;
   box-sizing: border-box;
 }
-
 @media (max-width: 60rem) {
-  .player-container > div,
-  .player-container-profile > div {
+  :is([data-comp=lottiePlayer], [data-comp^="lottiePlayer "]) > div {
     flex: 0 0 calc(50% - 20px);
   }
 }
-
 @media (max-width: 40rem) {
-  .player-container > div,
-  .player-container-profile > div {
+  :is([data-comp=lottiePlayer], [data-comp^="lottiePlayer "]) > div {
     flex: 0 0 100%;
   }
 }
-.dashboard {
+
+:is([data-comp=lottie], [data-comp^="lottie "]) {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+:is([data-comp=lottie], [data-comp^="lottie "]):hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+:is([data-comp=lottie], [data-comp^="lottie "]) .container {
+  padding: 2px 16px;
+}
+
+:is([data-comp=dashboard], [data-comp^="dashboard "]) {
   display: flex;
   flex-direction: column;
   justify-content: center;
   place-items: center;
   padding-top: 2rem;
   width: 100%;
-  /* height: 100vh; */
 }
 
-/* profile */
-
-.profile {
+:is([data-comp=profile], [data-comp^="profile "]) {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-
-.profile > div {
+:is([data-comp=profile], [data-comp^="profile "]) section {
+  width: 100%;
+  height: 100vh;
+  max-width: 420px;
+  min-height: 400px;
+  display: block;
+  margin: auto;
+  padding: 1rem;
+  margin-block-start: 10rem;
+}
+:is([data-comp=profile], [data-comp^="profile "]) > div {
   width: 50%;
   display: flex;
   flex-direction: column;
 }
-.noLottieContainer {
+:is([data-comp=profile], [data-comp^="profile "]) .noLottieContainer {
   margin-block-start: 15rem;
 }
-.update label {
+:is([data-comp=profile], [data-comp^="profile "]) form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+:is([data-comp=profile], [data-comp^="profile "]) .update label {
   cursor: pointer;
   display: flex;
   flex-direction: row;
   margin-top: 0;
   font-weight: 600;
+  gap: 0.5rem;
 }
-
-.update input[type="text"] {
+:is([data-comp=profile], [data-comp^="profile "]) .update input[type=text] {
   border: none;
-  padding: 0;
   font-size: 1rem;
 }
-
-.player-container-profile {
+:is([data-comp=profile], [data-comp^="profile "]) .player-container-profile {
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* gap: 1rem; */
 }
-h2 {
+:is([data-comp=profile], [data-comp^="profile "]) h2 {
   padding-top: 2rem;
   padding-left: 2rem;
 }
-
+:is([data-comp=profile], [data-comp^="profile "]) .player-container-profile > div {
+  flex: 0 0 calc(33.33% - 20px);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
 @media (max-width: 40rem) {
-  .profile {
+  :is([data-comp=profile], [data-comp^="profile "]) {
     flex-direction: column;
   }
-  .profile > div {
+  :is([data-comp=profile], [data-comp^="profile "]) > div {
     width: 80%;
   }
-  section {
+  :is([data-comp=profile], [data-comp^="profile "]) section {
     margin-block-start: 1rem;
   }
-  .player-container-profile {
+  :is([data-comp=profile], [data-comp^="profile "]) .player-container-profile {
     padding: 1rem;
   }
-  h2 {
+  :is([data-comp=profile], [data-comp^="profile "]) .player-container-profile > div {
+    flex: 0 0 100%;
+  }
+  :is([data-comp=profile], [data-comp^="profile "]) h2 {
     font-size: 1.2rem;
     padding-left: 1rem;
   }
 }
-/* h1.headingProfile {
-  width: 20%;
-  display: block;
-} */
-
-/* lottie card */
-
-.lottieCard {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-}
-.lottieCard:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.container {
-  padding: 2px 16px;
+@media (max-width: 60rem) {
+  :is([data-comp=profile], [data-comp^="profile "]) .player-container-profile > div {
+    flex: 0 0 calc(50% - 20px);
+  }
 }
 
-/* search bar */
-.searchBar {
+:is([data-comp=button], [data-comp^="button "]) {
+  font-weight: 600;
+  color: #333333;
+  border: 1px solid #01313c;
+  padding: 0.3125rem 0;
+  border-radius: 0;
+  background-color: var(--color-none);
+  font-size: 1rem;
+  margin: 0;
+  margin-top: 1.25rem;
+  position: relative;
+  box-shadow: none;
+}
+:is([data-comp=button], [data-comp^="button "]):hover {
+  background-color: var(--color-button-hover);
+  color: var(--color-white);
+  border-color: var(--color-none);
+  cursor: pointer;
+}
+
+:is([data-comp=searchBar], [data-comp^="searchBar "]) {
   display: flex;
   justify-content: flex-end;
   position: absolute;
@@ -250,25 +647,9 @@ h2 {
   right: 4rem;
   margin-block-end: 2rem;
 }
-.searchBar button {
-  font-weight: 1000;
-  font-size: 1rem;
-  color: none;
-  background-color: transparent;
-  border-radius: none;
-  padding: none;
+
+input[type=search] {
   border: none;
-  margin: 0;
-  margin-top: none;
-}
-.searchBar button::hover {
-  background-color: #0f02f7 !important;
-}
-
-/* reorder */
-
-.reorder {
-  position: absolute;
-  top: 2rem;
-  left: 7rem;
+  padding-inline-start: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
 }
