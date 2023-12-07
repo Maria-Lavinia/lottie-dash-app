@@ -1,0 +1,64 @@
+// -----------------------------------------------------------------------------
+// Layout Base
+// -----------------------------------------------------------------------------
+
+// Variables
+$one-px: 0.0625rem;
+$bp-mobile-start: 0;
+$bp-mobile-end: 40rem - $one-px;
+$bp-tablet-start: 40rem;
+$bp-tablet-end: 60rem - $one-px;
+$bp-desktop-start: 60rem;
+$bp-desktop-end: infinity;
+
+$breakpoint-list: null mobile tablet desktop;
+$box-map: (
+  left: inline-start,
+  right: inline-end,
+  top: block-start,
+  bottom: block-end,
+
+  inline-start: inline-start,
+  inline-end: inline-end,
+  block-start: block-start,
+  block-end: block-end,
+
+  inline: inline-start inline-end,
+  block: block-start block-end,
+  null: inline-start inline-end block-start block-end,
+);
+
+@mixin base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  @at-root html {
+    --on: ;
+    --off: initial;
+    color: var(--color-brand);
+    background-color: var(--color-white);
+    // grid states
+    @media (min-width: $bp-mobile-start) {
+      --is-mobile: var(--on);
+      --is-tablet: var(--off);
+      --is-desktop: var(--off);
+    }
+    @media (min-width: $bp-tablet-start) {
+      --is-mobile: var(--off);
+      --is-tablet: var(--on);
+      --is-desktop: var(--off);
+    }
+    @media (min-width: $bp-desktop-start) {
+      --is-mobile: var(--off);
+      --is-tablet: var(--off);
+      --is-desktop: var(--on);
+    }
+    font-size: 22px;
+  }
+  .App {
+    display: flex;
+    width: 100%;
+  }
+}

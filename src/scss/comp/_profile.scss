@@ -1,0 +1,100 @@
+// -----------------------------------------------------------------------------
+// Input Components
+// -----------------------------------------------------------------------------
+@use "../frankly/comp";
+@use "../frankly/theme";
+
+// -----------------------------------------------------------------------------
+// Logo Component
+// -----------------------------------------------------------------------------
+@mixin profile {
+  @include comp.create("profile") {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    section {
+      width: 100%;
+      height: 100vh;
+      max-width: 420px;
+      min-height: 400px;
+      display: block;
+      margin: auto;
+      padding: 1rem;
+      margin-block-start: 10rem;
+    }
+
+    & > div {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+    .noLottieContainer {
+      margin-block-start: 15rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      //   padding-bottom: 1rem;
+    }
+    .update label {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      margin-top: 0;
+      font-weight: 600;
+    }
+
+    .update input[type="text"] {
+      border: none;
+      padding: 0;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .player-container-profile {
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    h2 {
+      padding-top: 2rem;
+      padding-left: 2rem;
+    }
+    .player-container-profile > div {
+      flex: 0 0 calc(33.33% - 20px);
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    }
+    @media (max-width: 40rem) {
+      flex-direction: column;
+
+      & > div {
+        width: 80%;
+      }
+      section {
+        margin-block-start: 1rem;
+      }
+      .player-container-profile {
+        padding: 1rem;
+      }
+      .player-container-profile > div {
+        flex: 0 0 100%;
+      }
+      h2 {
+        font-size: 1.2rem;
+        padding-left: 1rem;
+      }
+    }
+    @media (max-width: 60rem) {
+      .player-container-profile > div {
+        flex: 0 0 calc(50% - 20px);
+      }
+    }
+  }
+}

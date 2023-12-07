@@ -46,7 +46,7 @@ export default function Login() {
 
   return (
     <>
-      <section>
+      <section data-comp="form">
         <h1>Sign in with you email</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">
@@ -73,8 +73,14 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          {error && <p className="error">{error}</p>}
-          <button type="submit">Sign in </button>
+          {error && (
+            <p data-color="text-error" data-font="text-sm">
+              {error}
+            </p>
+          )}
+          <button data-comp="button" type="submit">
+            Sign in{" "}
+          </button>
         </form>
       </section>
     </>

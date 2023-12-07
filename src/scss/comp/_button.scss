@@ -1,0 +1,33 @@
+// -----------------------------------------------------------------------------
+// Input Components
+// -----------------------------------------------------------------------------
+@use "../frankly/comp";
+@use "../frankly/theme";
+
+// -----------------------------------------------------------------------------
+// Logo Component
+// -----------------------------------------------------------------------------
+@mixin button {
+  @include comp.create("button") {
+    font-weight: 1000;
+    color: #333333;
+    border: 1px solid #01313c;
+    // border: none;
+    padding: 0.3125rem 0;
+    border-radius: 0;
+    // border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-none);
+    font-size: 1rem;
+    margin: 0;
+    margin-top: calc(4 * 0.3125rem);
+    position: relative;
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--color-button-hover);
+      color: var(--color-white);
+      border-color: var(--color-none);
+      cursor: pointer;
+    }
+  }
+}
