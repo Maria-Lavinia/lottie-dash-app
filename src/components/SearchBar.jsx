@@ -16,7 +16,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div data-comp="searchBar" className="searchBar">
+      <div data-comp="searchBar">
         <input
           type="search"
           placeholder="Search"

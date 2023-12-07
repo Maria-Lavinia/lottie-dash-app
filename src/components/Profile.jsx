@@ -56,8 +56,8 @@ export default function Profile() {
               Hi, {user?.firstName}! ({user?.role}) 🫶🏻
             </h1>
             <p
+              data-color="text-black"
               style={{
-                color: "black",
                 marginBottom: 1 + "em",
                 fontSize: 0.8 + "em",
               }}
