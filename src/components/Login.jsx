@@ -79,7 +79,7 @@ export default function Login() {
             </p>
           )}
           <button data-comp="button" type="submit">
-            Sign in{" "}
+            Sign in
           </button>
         </form>
       </section>

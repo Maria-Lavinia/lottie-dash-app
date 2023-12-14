@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
   async (userCredentials) => {
     try {
       const response = await axios.post(
-        `http://localhost:3005/auth/login`,
+        `http://localhost:3005/auth/login/`,
         userCredentials
       );
       const { access_token, id, role } = response.data;
@@ -26,7 +26,7 @@ export const getOneUser = createAsyncThunk("user/id", async () => {
   const token = localStorage.getItem("token");
   try {
     const userId = localStorage.getItem("userId");
-    const response = await axios.get(`http://localhost:3005/users/${userId}`, {
+    const response = await axios.get(`http://localhost:3005/users/${userId}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -43,7 +43,7 @@ export const updateUser = createAsyncThunk(
     try {
       const userId = localStorage.getItem("userId");
       const response = await axios.put(
-        `http://localhost:3005/users/${userId}`,
+        `http://localhost:3005/users/${userId}/`,
         userUpdates
       );
       return response.data;
