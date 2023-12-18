@@ -653,3 +653,36 @@ input[type=search] {
   padding-inline-start: 0.4rem;
   border-bottom: 1px solid var(--color-border);
 }
+
+:is([data-comp=helpBtn], [data-comp^="helpBtn "]) {
+  position: absolute;
+  top: 2rem;
+  right: -5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+:is([data-comp=helpBtn], [data-comp^="helpBtn "]) p {
+  text-align: center;
+  font-size: 0.5rem;
+  max-width: 30%;
+}
+:is([data-comp=helpBtn], [data-comp^="helpBtn "]) svg {
+  transform: scale(1);
+  animation: pulse 2s infinite;
+}
+:is([data-comp=helpBtn], [data-comp^="helpBtn "]) svg:hover {
+  cursor: pointer;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.95);
+  }
+}

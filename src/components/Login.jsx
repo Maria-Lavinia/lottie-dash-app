@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../redux/users/UserSlice";
 import { useNavigate } from "react-router-dom";
+import HelpButton from "./HelpButton";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -47,6 +48,7 @@ export default function Login() {
   return (
     <>
       <section data-comp="form">
+        <HelpButton />
         <h1>Sign in with you email</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">
