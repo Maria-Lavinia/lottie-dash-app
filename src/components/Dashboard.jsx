@@ -10,6 +10,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SearchBar from "./SearchBar";
 // import TocIcon from "@mui/icons-material/Toc";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
+import QrCodeGenerator from "./QrCodeGenerator";
+
 export default function Dashboard() {
   const dispatch = useDispatch();
   const animations = useSelector((state) => state.animations.animations);
@@ -83,7 +85,6 @@ to fetch the animations and update the Redux store with the fetched data. */
       <div data-comp="dashboard">
         <h1>Dashboard</h1>
         <p>Frankly's Lottie Animations</p>
-
         {/* <Filter /> */}
         <div data-comp="lottiePlayer">
           {/* By adding Array.isArray(animations) before the map function, you ensure that you only attempt to map over animations if it's an array.  */}
