@@ -83,6 +83,11 @@ export default function Login() {
           <button data-comp="button" type="submit">
             Sign in
           </button>
+          <p style={{ fontSize: 0.8 + "rem", paddingTop: 0.5 + "rem" }}>
+            If you don't have an account, sign up as a{" "}
+            <a href="/signup-dev">developer</a> or as an{" "}
+            <a href="/signup-admin">admin</a>.
+          </p>
         </form>
       </section>
     </>

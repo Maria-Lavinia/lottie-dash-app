@@ -7,13 +7,45 @@ export const loginUser = createAsyncThunk(
   async (userCredentials) => {
     try {
       const response = await axios.post(
-        `http://localhost:3005/auth/login/`,
+        `http://localhost:3005/auth/login`,
         userCredentials
       );
       const { access_token, id, role } = response.data;
       localStorage.setItem("token", access_token);
       localStorage.setItem("userId", id);
       localStorage.setItem("role", role);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const signUpUser = createAsyncThunk(
+  "auth/signupUser",
+  async (userCredentials) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3005/auth/signupdev`,
+        userCredentials
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const signUpAdmin = createAsyncThunk(
+  "auth/signUpAdmin",
+  async (userCredentials) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3005/auth/signupadmin`,
+        userCredentials
+      );
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -74,6 +106,12 @@ const userSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = action.payload;
       })
+      .addCase(signUpUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
+      .addCase(signUpAdmin.fulfilled, (state, action) => {
+        state.user = action.payload;
+      })
       .addCase(loginUser.rejected, (state, action) => {
         state.user = null;
         state.token = null;
@@ -89,6 +127,12 @@ const userSlice = createSlice({
       .addCase(updateUser.rejected, (state, action) => {
         state.user = null;
       })
+      .addCase(signUpUser.rejected, (state, action) => {
+        state.user = null;
+      })
+      .addCase(signUpAdmin.rejected, (state, action) => {
+        state.user = null;
+      })
       .addCase(loginUser.pending, (state) => {
         state.user = null;
         state.token = null;
@@ -98,6 +142,12 @@ const userSlice = createSlice({
         state.user = null;
       })
       .addCase(updateUser.pending, (state) => {
+        state.user = null;
+      })
+      .addCase(signUpUser.pending, (state) => {
+        state.user = null;
+      })
+      .addCase(signUpAdmin.pending, (state) => {
         state.user = null;
       });
   },
