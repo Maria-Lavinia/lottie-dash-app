@@ -8,9 +8,7 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchBar from "./SearchBar";
-// import TocIcon from "@mui/icons-material/Toc";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
-import QrCodeGenerator from "./QrCodeGenerator";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
