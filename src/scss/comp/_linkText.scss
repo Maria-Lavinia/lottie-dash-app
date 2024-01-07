@@ -1,0 +1,21 @@
+// -----------------------------------------------------------------------------
+// Input Components
+// -----------------------------------------------------------------------------
+@use "../frankly/comp";
+@use "../frankly/theme";
+
+// -----------------------------------------------------------------------------
+// linkText Component
+// -----------------------------------------------------------------------------
+@mixin linkText {
+  @include comp.create("linkText") {
+    padding-left: 16px;
+    color: var(--color-white);
+  }
+}
+@mixin linkText--closed {
+  @include comp.create("linkText", "closed") {
+    composes: linkText;
+    visibility: hidden;
+  }
+}

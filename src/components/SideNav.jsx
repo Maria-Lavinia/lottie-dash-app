@@ -8,7 +8,6 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import styles from "./SideNav.module.css";
 import { useSelector } from "react-redux";
 
 const logOut = () => {
@@ -69,8 +68,8 @@ export default function SideNav() {
   };
 
   return (
-    <div className={open ? styles.sidenav : styles.sidenavClosed}>
-      <button className={styles.menuBtn} onClick={toggleOpen}>
+    <div data-comp={open ? "sideNav" : "sideNav closed"}>
+      <button data-comp="menuBtn" onClick={toggleOpen}>
         {open ? (
           <KeyboardDoubleArrowLeftIcon />
         ) : (
@@ -81,12 +80,12 @@ export default function SideNav() {
         token ? (
           <NavLink
             key={item.id}
-            className={styles.sideitem}
+            data-comp="sideItem"
             to={item.link}
             onClick={item.onClick}
           >
             {item.icon}
-            <span className={open ? styles.linkText : styles.linkTextClosed}>
+            <span data-comp={open ? "linkText" : "linkText closed"}>
               {item.text}
             </span>
           </NavLink>

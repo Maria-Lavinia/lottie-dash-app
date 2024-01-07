@@ -1,0 +1,68 @@
+// -----------------------------------------------------------------------------
+// Input Components
+// -----------------------------------------------------------------------------
+@use "../frankly/comp";
+@use "../frankly/theme";
+
+// -----------------------------------------------------------------------------
+// SideNav Component
+// -----------------------------------------------------------------------------
+@mixin sideNav {
+  @include comp.create("sideNav") {
+    width: 250px;
+    transition: width 0.3s ease-in-out;
+    background-color: rgb(10, 25, 41) !important;
+    padding-top: 28px;
+    z-index: 99;
+    //   }
+
+    //   .sidenavClosed {
+    //     composes: sidenav;
+    //     transition: width 0.3s ease-in-out;
+    //     width: 60px;
+    //   }
+
+    // .sideitem {
+    //   display: flex;
+    //   align-items: center;
+    //   padding: 10px 10px;
+    //   cursor: pointer;
+    //   color: #b2bac2;
+    //   text-decoration: none;
+    // }
+
+    // .linkText {
+    //   padding-left: 16px;
+    // }
+
+    // .linkTextClosed {
+    //   composes: linkText;
+    //   visibility: hidden;
+    // }
+
+    // .sideitem:hover {
+    //   background-color: #244f7d1c !important;
+    // }
+
+    // .menuBtn {
+    //   align-self: center;
+    //   align-self: flex-start;
+    //   justify-self: flex-end;
+    //   color: #b2bac2;
+    //   background-color: transparent;
+    //   border: none;
+    //   cursor: pointer;
+    //   padding-left: 10px;
+    // }
+    // .menuBtn:hover {
+    //   background-color: #244f7d1c !important;
+    // }
+  }
+}
+@mixin sideNav--closed {
+  @include comp.create("sideNav", "closed") {
+    composes: sideNav;
+    transition: width 0.3s ease-in-out;
+    width: 60px;
+  }
+}

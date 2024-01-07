@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import HelpButton from "./HelpButton";
 
 export default function SignupAdmin() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("@frankly.dk");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -32,17 +32,18 @@ export default function SignupAdmin() {
       return;
     }
     try {
-      const response = dispatch(signUpAdmin(userCredentials));
+      const response = await dispatch(signUpAdmin(userCredentials));
       console.log(response);
-      if (response) {
+
+      if (response.payload === undefined) {
+        setError("Authentication failed");
+        console.error("Authentication failed");
+      } else {
         setEmail("");
         setPassword("");
         setFirstName("");
         setLastName("");
         navigate("/");
-      } else {
-        setError("Authentication failed");
-        console.error("Authentication failed");
       }
     } catch (error) {
       setError("Sign up failed. Please try again.");
@@ -54,7 +55,7 @@ export default function SignupAdmin() {
     <>
       <section data-comp="form">
         <HelpButton />
-        <h1>Sign up as an Admin</h1>
+        <h1>Sign up as an Motion Designer</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">
             Email:
@@ -74,6 +75,7 @@ export default function SignupAdmin() {
             <input
               type="password"
               id="password"
+              autoComplete="off"
               required
               value={password}
               placeholder="1234"
@@ -85,6 +87,7 @@ export default function SignupAdmin() {
             <input
               type="text"
               id="firstName"
+              autoComplete="off"
               required
               value={firstName}
               placeholder="Maria"
@@ -96,6 +99,7 @@ export default function SignupAdmin() {
             <input
               type="text"
               id="lastName"
+              autoComplete="off"
               required
               value={lastName}
               placeholder="Otelea"

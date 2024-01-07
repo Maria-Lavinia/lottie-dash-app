@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import HelpButton from "./HelpButton";
 
 export default function SignupDev() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("@frankly.dk");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -16,10 +16,7 @@ export default function SignupDev() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    if (token) {
-      window.location.href = "/";
-    }
+
     let userCredentials = {
       email,
       password,
@@ -36,16 +33,17 @@ export default function SignupDev() {
     }
     try {
       const response = await dispatch(signUpUser(userCredentials));
-      // Check if the token exists
-      if (response) {
+      console.log(response);
+
+      if (response.payload === undefined) {
+        setError("Authentication failed");
+        console.error("Authentication failed");
+      } else {
         setEmail("");
         setPassword("");
         setFirstName("");
         setLastName("");
         navigate("/");
-      } else {
-        setError("Authentication failed");
-        console.error("Authentication failed");
       }
     } catch (error) {
       setError("Sign up failed. Please try again.");
@@ -88,6 +86,7 @@ export default function SignupDev() {
             <input
               type="text"
               id="firstName"
+              autoComplete="off"
               required
               value={firstName}
               placeholder="Maria"
@@ -99,6 +98,7 @@ export default function SignupDev() {
             <input
               type="text"
               id="lastName"
+              autoComplete="off"
               required
               value={lastName}
               placeholder="Otelea"

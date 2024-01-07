@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// Input Components
+// -----------------------------------------------------------------------------
+@use "../frankly/comp";
+@use "../frankly/theme";
+
+// -----------------------------------------------------------------------------
+// sideItem Component
+// -----------------------------------------------------------------------------
+@mixin sideItem {
+  @include comp.create("sideItem") {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    cursor: pointer;
+    color: #b2bac2;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #244f7d1c !important;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import HelpButton from "./HelpButton";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("@frankly.dk");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -34,8 +34,11 @@ export default function Login() {
         setUsername("");
         setPassword("");
         navigate("/upload-lottie");
-      } else {
+      } else if (access_token && role === "user") {
+        setUsername("");
+        setPassword("");
         navigate("/dashboard");
+      } else {
         setError("Authentication failed");
         console.error("Authentication failed");
       }
@@ -86,7 +89,7 @@ export default function Login() {
           <p style={{ fontSize: 0.8 + "rem", paddingTop: 0.5 + "rem" }}>
             If you don't have an account, sign up as a{" "}
             <a href="/signup-dev">developer</a> or as an{" "}
-            <a href="/signup-admin">admin</a>.
+            <a href="/signup-admin">motion designer</a>.
           </p>
         </form>
       </section>

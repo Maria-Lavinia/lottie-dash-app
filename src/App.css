@@ -686,3 +686,53 @@ input[type=search] {
     transform: scale(0.95);
   }
 }
+
+:is([data-comp=sideNav], [data-comp^="sideNav "]) {
+  width: 250px;
+  transition: width 0.3s ease-in-out;
+  background-color: rgb(10, 25, 41) !important;
+  padding-top: 28px;
+  z-index: 99;
+}
+
+[data-comp~=closed][data-comp^="sideNav "] {
+  composes: sideNav;
+  transition: width 0.3s ease-in-out;
+  width: 60px;
+}
+
+:is([data-comp=menuBtn], [data-comp^="menuBtn "]) {
+  align-self: center;
+  align-self: flex-start;
+  justify-self: flex-end;
+  color: #b2bac2;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-left: 10px;
+}
+:is([data-comp=menuBtn], [data-comp^="menuBtn "]):hover {
+  background-color: rgba(36, 79, 125, 0.1098039216) !important;
+}
+
+:is([data-comp=linkText], [data-comp^="linkText "]) {
+  padding-left: 16px;
+  color: var(--color-white);
+}
+
+[data-comp~=closed][data-comp^="linkText "] {
+  composes: linkText;
+  visibility: hidden;
+}
+
+:is([data-comp=sideItem], [data-comp^="sideItem "]) {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  cursor: pointer;
+  color: #b2bac2;
+  text-decoration: none;
+}
+:is([data-comp=sideItem], [data-comp^="sideItem "]):hover {
+  background-color: rgba(36, 79, 125, 0.1098039216) !important;
+}

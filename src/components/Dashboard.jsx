@@ -116,7 +116,10 @@ to fetch the animations and update the Redux store with the fetched data. */
                     <p data-color="text-black">
                       <strong>{animation.fileName}</strong>
                     </p>
-                    <p data-color="text-black"> - {animation.projectName} - </p>
+                    <p data-color="text-black">
+                      {" "}
+                      Project: - {animation.projectName} -{" "}
+                    </p>
 
                     <Player
                       autoplay

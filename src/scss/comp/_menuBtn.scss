@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// Input Components
+// -----------------------------------------------------------------------------
+@use "../frankly/comp";
+@use "../frankly/theme";
+
+// -----------------------------------------------------------------------------
+// menuBtn Component
+// -----------------------------------------------------------------------------
+@mixin menuBtn {
+  @include comp.create("menuBtn") {
+    align-self: center;
+    align-self: flex-start;
+    justify-self: flex-end;
+    color: #b2bac2;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 10px;
+
+    &:hover {
+      background-color: #244f7d1c !important;
+    }
+  }
+}

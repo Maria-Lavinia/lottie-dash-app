@@ -9,7 +9,6 @@ export default function Profile() {
   const dispatch = useDispatch();
   const animations = useSelector((state) => state.animations.animations);
   const user = useSelector((state) => state.user.user);
-  // const [userId, setUserid] = useState(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
