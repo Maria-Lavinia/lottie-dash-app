@@ -34,12 +34,12 @@ export default function UploadAnimation() {
     }
 
     try {
-      await dispatch(postAnimation(lottieCredentials));
+      dispatch(postAnimation(lottieCredentials));
+      setSucces(true);
     } catch (error) {
       setError("Upload failed. Please try again.");
       console.error("Upload failed:", error);
     }
-    setSucces(true);
   };
   const handleFileChange = (e) => {
     const file = e.target.files[0];

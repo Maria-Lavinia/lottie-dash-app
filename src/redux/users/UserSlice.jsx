@@ -7,7 +7,7 @@ export const loginUser = createAsyncThunk(
   async (userCredentials) => {
     try {
       const response = await axios.post(
-        `http://localhost:3005/auth/login`,
+        `https://lottie-dash-server.azurewebsites.net/auth/login`,
         userCredentials
       );
       const { access_token, id, role } = response.data;
@@ -27,7 +27,7 @@ export const signUpUser = createAsyncThunk(
   async (userCredentials) => {
     try {
       const response = await axios.post(
-        `http://localhost:3005/auth/signupdev`,
+        `https://lottie-dash-server.azurewebsites.net/auth/signupdev`,
         userCredentials
       );
       console.log(response.data);
@@ -43,7 +43,7 @@ export const signUpAdmin = createAsyncThunk(
   async (userCredentials) => {
     try {
       const response = await axios.post(
-        `http://localhost:3005/auth/signupadmin`,
+        `https://lottie-dash-server.azurewebsites.net/auth/signupadmin`,
         userCredentials
       );
       console.log(response.data);
@@ -58,11 +58,14 @@ export const getOneUser = createAsyncThunk("user/id", async () => {
   const token = localStorage.getItem("token");
   try {
     const userId = localStorage.getItem("userId");
-    const response = await axios.get(`http://localhost:3005/users/${userId}/`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await axios.get(
+      `https://lottie-dash-server.azurewebsites.net/users/${userId}/`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     throw error;
@@ -75,7 +78,7 @@ export const updateUser = createAsyncThunk(
     try {
       const userId = localStorage.getItem("userId");
       const response = await axios.put(
-        `http://localhost:3005/users/${userId}/`,
+        `https://lottie-dash-server.azurewebsites.net/users/${userId}/`,
         userUpdates
       );
       return response.data;

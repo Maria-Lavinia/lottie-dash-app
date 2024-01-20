@@ -3,7 +3,9 @@ import axios from "axios";
 
 export const getAnimations = createAsyncThunk("get/animations", async () => {
   try {
-    const response = await axios.get(`http://localhost:3005/animations`);
+    const response = await axios.get(
+      `https://lottie-dash-server.azurewebsites.net/animations`
+    );
     return response.data;
   } catch (error) {
     throw error;
@@ -15,11 +17,13 @@ export const postAnimation = createAsyncThunk(
   async (lottieCredentials) => {
     try {
       const response = await axios.post(
-        `http://localhost:3005/animations/uploadlottie`,
+        `https://lottie-dash-server.azurewebsites.net/animations/uploadlottie`,
         lottieCredentials
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }
@@ -30,7 +34,7 @@ export const getUserAnimations = createAsyncThunk(
   async (userId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3005/animations/userAnimations/${userId}`
+        `https://lottie-dash-server.azurewebsites.net/animations/userAnimations/${userId}`
       );
       return response.data;
     } catch (error) {
@@ -43,7 +47,7 @@ export const deleteAnimation = createAsyncThunk(
   async (animationId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3005/animations/${animationId}`
+        `https://lottie-dash-server.azurewebsites.net/${animationId}`
       );
       return response.data;
     } catch (error) {
@@ -57,7 +61,7 @@ export const searchAnimations = createAsyncThunk(
   async (searchQuery) => {
     try {
       const response = await axios.get(
-        `http://localhost:3005/animations/search/fileName?fileName=${searchQuery}`
+        `https://lottie-dash-server.azurewebsites.net/animations/search/fileName?fileName=${searchQuery}`
       );
       if (response.data.length === 0) {
         alert("No results found");

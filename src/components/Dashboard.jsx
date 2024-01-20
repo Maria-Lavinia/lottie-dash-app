@@ -22,7 +22,7 @@ component mounts or when the `dispatch` function changes. The `getAnimations` ac
 to fetch the animations and update the Redux store with the fetched data. */
   useEffect(() => {
     dispatch(getAnimations());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     setDisplayedAnimations(animations);
@@ -37,7 +37,7 @@ to fetch the animations and update the Redux store with the fetched data. */
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(url); // to releasee associsated resources
   };
 
   const deleteOneAnimation = async (animation) => {

@@ -13,9 +13,9 @@ export default function Profile() {
   const [lastName, setLastName] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = () => {
       try {
-        const userIdStored = await localStorage.getItem("userId");
+        const userIdStored = localStorage.getItem("userId");
         dispatch(getOneUser());
         dispatch(getUserAnimations(userIdStored));
       } catch (error) {
@@ -32,13 +32,17 @@ export default function Profile() {
   }, [user]);
 
   const handleUpdate = async (e) => {
+    e.preventDefault();
     let userUpdates = {
       firstName: firstName,
       lastName: lastName,
     };
 
     try {
+      console.log("userUpdates:", userUpdates);
+
       dispatch(updateUser(userUpdates));
+      console.log("userUpdates:", dispatch);
     } catch (error) {
       console.error("Error updating data:", error);
     }
