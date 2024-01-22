@@ -8,6 +8,7 @@ export default function SearchBar() {
 
   const [searchQuery, setQuery] = useState("");
 
+  // updates the value of the searchQuery whenever the target value changes
   const onQueryChange = (e) => {
     const searchQuery = e.target.value;
     setQuery(searchQuery);

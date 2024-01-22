@@ -42,8 +42,10 @@ to fetch the animations and update the Redux store with the fetched data. */
 
   const deleteOneAnimation = async (animation) => {
     try {
-      await dispatch(deleteAnimation(animation.id));
-      window.location.reload();
+      dispatch(deleteAnimation(animation.id));
+      setTimeout(() => {
+        window.location.reload();
+      }, 200);
     } catch (error) {
       console.error("Error deleting animation:", error);
     }

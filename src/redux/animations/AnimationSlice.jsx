@@ -47,7 +47,7 @@ export const deleteAnimation = createAsyncThunk(
   async (animationId) => {
     try {
       const response = await axios.delete(
-        `https://lottie-dash-server.azurewebsites.net/${animationId}`
+        `https://lottie-dash-server.azurewebsites.net/animations/${animationId}`
       );
       return response.data;
     } catch (error) {
